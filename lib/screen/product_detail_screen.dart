@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+class ScreenArguments {
+  final String title1;
+  final String imageurl;
+
+  ScreenArguments(this.title1, this.imageurl);
+}
 class ProductDetailsScreen extends StatefulWidget {
   // final String id;
   // final String title;
@@ -17,10 +23,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   // final String title;
   // final String imageUrl;
   // _ProductDetailsScreenState({required this.id,required this.title,required this.imageUrl});
+
   @override
   Widget build(BuildContext context) {
-    final ProductID = (ModalRoute.of(context)!.settings.arguments) as String;
 
+    final result = (ModalRoute.of(context)!.settings.arguments) as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("title"),
@@ -29,7 +36,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text("${ProductID}"),
+            child: Image.network(result.imageurl),
           ),
         ],
       ),
