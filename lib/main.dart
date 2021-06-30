@@ -3,6 +3,8 @@ import 'package:shop_app/screen/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'screen/product_overview_screen.dart';
 import 'package:shop_app/widgets/product_item.dart';
+import 'package:shop_app/providers/Products_provider.dart';
+import 'package:provider/provider.dart';
 void main() {
   runApp(MyApp());
 }
@@ -16,16 +18,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "MY SHOP",
-      theme: ThemeData(
-        fontFamily: 'Lato',
-        brightness: Brightness.dark,
+    return ChangeNotifierProvider(
+      create: (context)=> Products_provider(),
+      child: MaterialApp(
+        title: "MY SHOP",
+        theme: ThemeData(
+          fontFamily: 'Lato',
+          brightness: Brightness.dark,
+        ),
+        home: ProductsOverviewScreen(),
+        routes: {
+          ProductDetailsScreen.routeName : (context) => ProductDetailsScreen(),
+        },
       ),
-      home: ProductsOverviewScreen(),
-      routes: {
-        ProductDetailsScreen.routeName : (context) => ProductDetailsScreen(),
-      },
     );
   }
 }
@@ -35,7 +40,6 @@ class MyHomepage extends StatefulWidget {
   @override
   _MyHomepageState createState() => _MyHomepageState();
 }
-
 class _MyHomepageState extends State<MyHomepage> {
   @override
   Widget build(BuildContext context) {
