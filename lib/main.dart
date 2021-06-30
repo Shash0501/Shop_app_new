@@ -1,8 +1,8 @@
 import 'dart:ui';
-
+import 'package:shop_app/screen/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'screen/product_overview_screen.dart';
-
+import 'package:shop_app/widgets/product_item.dart';
 void main() {
   runApp(MyApp());
 }
@@ -23,6 +23,9 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       home: ProductsOverviewScreen(),
+      routes: {
+        ProductDetailsScreen.routeName : (context) => ProductDetailsScreen(),
+      },
     );
   }
 }
