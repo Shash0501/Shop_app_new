@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'screen/product_overview_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,8 +18,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "MY SHOP",
-      theme: ThemeData.dark(),
-      home: MyHomePage(),
+      theme: ThemeData(
+        fontFamily: 'Lato',
+        brightness: Brightness.dark,
+      ),
+      home: ProductsOverviewScreen(),
     );
   }
 }
